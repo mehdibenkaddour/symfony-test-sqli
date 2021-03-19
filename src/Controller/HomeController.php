@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Form\SearchArticlesType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategorieRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
@@ -76,5 +78,45 @@ class HomeController extends AbstractController
      */
     public function getRecentArticles(ArticleRepository $article):array{
         return $article->findBy(['visibilite' => 'true'],['id' => 'DESC'],6);
+    }
+
+
+    /**
+     * @param ArticleRepository $article
+     * 
+     * @return Response
+     * 
+     * @Route("/search",name="home.search")
+     * 
+     */
+    public function searchArticle(ArticleRepository $article,Request $request,CategorieRepository $categorie){
+        if($request->getMethod() == "GET" && $request->attributes->get('_route') == "home.search"){
+            return $this->render('home/search.html.twig',[
+                'articles' => null,
+                'keyword' => '\"',
+                'categories' => $categorie->findAll()
+            ]);
+        }
+        $form = $this->createForm(SearchArticlesType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $query_search = $form['search']->getData();
+            $query = $article->createQueryBuilder('a')
+               ->where('a.titre LIKE :word')
+               ->orWhere('a.introduction LIKE :word')
+               ->orWhere('a.contenu LIKE :word')
+               ->setParameter('word', '%'.$query_search.'%')
+               ->getQuery();
+            $articles = $query->getResult();
+            return $this->render('home/search.html.twig',[
+                'articles' => $articles,
+                'keyword' => $query_search,
+                'categories' => $categorie->findAll()
+            ]);
+        }
+
+        return $this->render('partials/_search.html.twig',[
+            'form' => $form->createView(),
+        ]);
     }
 }

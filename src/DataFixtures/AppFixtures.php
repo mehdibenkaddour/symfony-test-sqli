@@ -37,15 +37,15 @@ class AppFixtures extends Fixture
             $article->setTitre($this->faker->sentence(5))
                     ->setContenu($this->faker->paragraph(3))
                     ->setIntroduction($this->faker->paragraph(3))
-                    ->setCover('https://picsum.photos/200/300')
+                    ->setCover('https://picsum.photos/781/502')
                     ->setDateDeCreation(new \DateTime())
                     ->setVisibilite(true)
-                    ->setTrending(true)
+                    ->setTrending("true")
                     ->setPopular(true)
                     ->setCategorie($this->getReference('article-categorie-'.rand(0,1)));
             if($i%2 == 0){
                 $article->setVisibilite(false)
-                        ->setTrending(false)
+                        ->setTrending("false")
                         ->setPopular(false);
             }
             $manager->persist($article);

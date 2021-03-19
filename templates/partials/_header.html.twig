@@ -11,13 +11,10 @@
         <div class="site-navigation">
             <div class="row">
                 <div class="col-md-6 text-center order-1 order-md-2 mb-3 mb-md-0">
-                    <a href="index-2.html" class="logo m-0 text-uppercase">MagDesign</a>
+                    <a href="{{path('home.index')}}" class="logo m-0 text-uppercase">MagDesign</a>
                 </div>
                 <div class="col-md-3 order-3 order-md-1">
-                    <form action="#" class="search-form">
-                        <span class="icon-search2"></span>
-                        <input type="search" class="form-control" placeholder="Search...">
-                    </form>
+                    {{ render(controller('App\\Controller\\HomeController::searchArticle')) }}
                 </div>
                 <div class="col-md-3 text-end order-2 order-md-3 mb-3 mb-md-0">
                     <div class="d-flex">
@@ -34,12 +31,12 @@
                 </div>
             </div>
             <ul class="js-clone-nav d-none d-lg-inline-none text-start site-menu float-end">
-                <li class="active"><a href="index-2.html">Home</a></li>
+                <li class="active"><a href="{{path('home.index')}}">Home</a></li>
                 <li class="has-children">
-                    <a href="categories.html">Categories</a>
+                    <a href="#">Categories</a>
                     <ul class="dropdown">
                     {% for categorie in categories %}
-                        <li><a href="#">{{categorie.title}}</a></li>
+                        <li><a href="{{path('category.articles',{'slug':categorie.slug})}}">{{categorie.title}}</a></li>
                     {% endfor %}
                     </ul>
                 </li>

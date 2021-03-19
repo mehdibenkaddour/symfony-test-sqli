@@ -4,10 +4,11 @@
     <div class="container">
         <div class="row mb-5 justify-content-center">
             <div class="col-lg-9">
-                <span class="fw-normal text-uppercase d-block mb-1">Categories</span>
-                <h2 class="heading">{{categorie.title}}</h2>
+                <span class="fw-normal text-uppercase d-block mb-1">Search For</span>
+                <h2 class="heading">"{{keyword}}"</h2>
             </div>
         </div>
+        {% if articles %}
         <div class="row justify-content-center">
         {% for article in articles %}
             <div class="col-lg-9">
@@ -36,6 +37,15 @@
             </div>
         {% endfor %}
         </div>
+        {% else %}
+        <div class="row justify-content-center md-5">
+            <div class="col-lg-9">
+                <div class="post-entry d-md-flex small-horizontal mb-5">
+                    <h4>No article found </h4>
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

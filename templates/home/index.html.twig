@@ -15,18 +15,18 @@
                         <div class="item">
                             <div class="post-entry d-lg-flex">
                                 <div class="me-lg-5 thumbnail mb-4 mb-lg-0">
-                                    <a href="single.html">
+                                    <a href="{{path('blog.index',{'slug':article.slug})}}">
                                         <img src="{{article.cover}}" alt="Image" class="img-fluid">
                                     </a>
                                 </div>
                                 <div class="content align-self-center">
                                     <div class="post-meta mb-3">
-                                        <a href="#" class="category">{{article.categorie.title}}</a>
+                                        <a href="{{path('category.articles',{'slug':article.categorie.slug})}}" class="category">{{article.categorie.title}}</a>
                                         <span class="date">{{article.dateDeCreation|date("F d, Y")}}</span>
                                     </div>
-                                    <h2 class="heading"><a href="single.html">{{article.titre}}</a></h2>
+                                    <h2 class="heading"><a href="{{path('blog.index',{'slug':article.slug})}}">{{article.titre}}</a></h2>
                                     <p>{{article.introduction}}</p>
-                                    <a href="#" class="post-author d-flex align-items-center">
+                                    <a href="{{path('blog.index',{'slug':article.slug})}}" class="post-author d-flex align-items-center">
                                         <div class="author-pic">
                                             <img src="https://i.pravatar.cc/45" alt="Image">
                                         </div>
@@ -53,17 +53,17 @@
             <div class="col-lg-4">
                 <div class="post-entry d-block small-post-entry-v">
                     <div class="thumbnail">
-                        <a href="single.html">
+                        <a href="{{path('blog.index',{'slug':article.slug})}}">
                             <img src="{{article.cover}}" alt="Image" class="img-fluid">
                         </a>
                     </div>
                     <div class="content">
                         <div class="post-meta mb-1">
-                            <a href="#" class="category">{{article.categorie.title}}</a> &mdash;
+                            <a href="{{path('category.articles',{'slug':article.categorie.slug})}}" class="category">{{article.categorie.title}}</a> &mdash;
                             <span class="date">{{article.dateDeCreation|date("F d, Y")}}</span>
                         </div>
                         <h2 class="heading mb-3">
-                            <a href="single.html">{{article.titre}}</a>
+                            <a href="{{path('blog.index',{'slug':article.slug})}}">{{article.titre}}</a>
                         </h2>
                         <p>{{article.introduction}}</p>
                         <a href="#" class="post-author d-flex align-items-center">
@@ -100,17 +100,17 @@
             <div class="item">
                 <div class="post-entry d-block small-post-entry-v">
                     <div class="thumbnail">
-                        <a href="single.html">
+                        <a href="{{path('blog.index',{'slug':article.slug})}}">
                             <img src="{{article.cover}}" alt="Image" class="img-fluid">
                         </a>
                     </div>
                     <div class="content">
                         <div class="post-meta mb-1">
-                            <a href="#" class="category">{{article.categorie.title}}</a> &mdash;
+                            <a href="{{path('category.articles',{'slug':article.categorie.slug})}}" class="category">{{article.categorie.title}}</a> &mdash;
                             <span class="date">{{article.dateDeCreation|date("F d, Y")}}</span>
                         </div>
                         <h2 class="heading mb-3">
-                            <a href="single.html">{{article.titre}}</a>
+                            <a href="{{path('blog.index',{'slug':article.slug})}}">{{article.titre}}</a>
                         </h2>
                         <p>{{article.introduction}}</p>
                         <a href="#" class="post-author d-flex align-items-center">
@@ -147,11 +147,11 @@
                             </div>
                             <div class="content">
                                 <div class="post-meta mb-1">
-                                    <a href="#" class="category">{{article.categorie.title}}</a>
+                                    <a href="{{path('category.articles',{'slug':article.categorie.slug})}}" class="category">{{article.categorie.title}}</a>
                                     &mdash;
                                     <span class="date">{{article.dateDeCreation|date("F d, Y")}}</span>
                                 </div>
-                                <h2 class="heading"><a href="single.html">{{article.titre}}</a></h2>
+                                <h2 class="heading"><a href="{{path('blog.index',{'slug':article.slug})}}">{{article.titre}}</a></h2>
                                 <a href="#" class="post-author d-flex align-items-center">
                                     <div class="author-pic">
                                         <img src="https://i.pravatar.cc/45" alt="Image">
@@ -182,11 +182,11 @@
                             </div>
                             <div class="content">
                                 <div class="post-meta mb-1">
-                                    <a href="#" class="category">{{article.categorie.title}}</a>,
+                                    <a href="{{path('category.articles',{'slug':article.categorie.slug})}}" class="category">{{article.categorie.title}}</a>,
                                     &mdash;
                                     <span class="date">{{article.dateDeCreation|date("F d, Y")}}</span>
                                 </div>
-                                <h2 class="heading"><a href="single.html">{{article.titre}}</a></h2>
+                                <h2 class="heading"><a href="{{path('blog.index',{'slug':article.slug})}}">{{article.titre}}</a></h2>
                                 <a href="#" class="post-author d-flex align-items-center">
                                     <div class="author-pic">
                                         <img src="https://i.pravatar.cc/45" alt="Image">

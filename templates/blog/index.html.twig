@@ -45,10 +45,10 @@
                     </div>
                     <div class="content">
                         <div class="post-meta mb-3">
-                            <a href="#" class="category">{{article.categorie.title}}</a>, &mdash;
+                            <a href="{{path('category.articles',{'slug':article.categorie.slug})}}" class="category">{{article.categorie.title}}</a>, &mdash;
                             <span class="date">{{article.dateDeCreation|date("F d, Y")}}</span>
                         </div>
-                        <h2 class="heading"><a href="single.html">{{article.titre}}</a></h2>
+                        <h2 class="heading"><a href="{{path('blog.index',{'slug':article.slug})}}">{{article.titre}}</a></h2>
                         <p>{{article.introduction}}</p>
                         <a href="#" class="post-author d-flex align-items-center">
                             <div class="author-pic">

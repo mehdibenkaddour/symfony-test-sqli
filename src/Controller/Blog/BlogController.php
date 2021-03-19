@@ -21,11 +21,15 @@ class BlogController extends AbstractController
      */
     public function index(ArticleRepository $articleRepository,CategorieRepository $category,string $slug): Response
     {   
-        $article = $articleRepository->findOneBy(['slug' => $slug, 'visibilite' => 'true']);
+        $article = $articleRepository->findOneBy(['slug' => $slug, 'visibilite' => true]);
         if(!$article){
             throw $this->createNotFoundException('The article does not exist');
         }
         $related_articles = $article->getCategorie()->getArticles()->getValues();
+        foreach($related_articles as $key => $article_related){
+            if($article_related->getVisibilite() == false || $article_related->getSlug() === $slug)
+                unset($related_articles[$key]);
+        }
         return $this->render('blog/index.html.twig', [
             'article' => $article,
             'related_articles' => $related_articles,
